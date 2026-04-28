@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS marks (
     enrollment_id INT,
     marks_obtained INT NOT NULL,
     total_marks INT NOT NULL,
-    grade VARCHAR(5), -- 'A+', 'A', 'B', 'C', 'Fail'
+    grade VARCHAR(5), 
     FOREIGN KEY (enrollment_id) REFERENCES enrollment(enrollment_id) ON DELETE CASCADE,
     CHECK (marks_obtained <= total_marks)
 );

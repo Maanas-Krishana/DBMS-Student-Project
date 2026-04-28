@@ -54,12 +54,11 @@ INSERT INTO enrollment (enrollment_id, student_id, course_id, semester) VALUES
 (19, 18, 103, 'Sem 4');
 
 -- 4. Insert Attendance 
--- Note: 'attendance_percentage' is automatically calculated
 INSERT INTO attendance (enrollment_id, total_classes, attended_classes) VALUES
-(1, 40, 35), -- Amit in DBMS: 87.5% (Eligible for exams)
-(2, 30, 28), -- Amit in OS: 93.3% (Eligible for exams)
+(1, 40, 35), 
+(2, 30, 28), 
 (3, 40, 20), -- Neha in DBMS: 50% (NOT Eligible for exams)
-(4, 40, 32), -- Rahul in CN: 80% (Eligible for exams)
+(4, 40, 32),
 (5, 40, 36),
 (6, 30, 28),
 (7, 40, 32),
@@ -81,17 +80,11 @@ INSERT INTO attendance (enrollment_id, total_classes, attended_classes) VALUES
 -- Stored Procedure Testing (Recording Marks)
 -- ---------------------------------------------------------
 
--- Test 1: Amit in DBMS (Should Pass)
+
 CALL RecordMarks(1, 85, 100);
 
--- Test 2: Amit in OS (Should Fail)
 CALL RecordMarks(2, 30, 100);
 
--- Test 3: Neha in DBMS (Should throw an error due to 75% trigger)
--- UNCOMMENT TO TEST TRIGGER:
--- CALL RecordMarks(3, 90, 100); 
-
--- Test 4: Rahul in CN (Should Pass)
 CALL RecordMarks(4, 75, 100);
 
 CALL RecordMarks(5, 80, 100);
